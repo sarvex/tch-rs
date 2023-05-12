@@ -302,7 +302,6 @@ class SubprocVecEnv(VecEnv):
 
 # Create the environment.
 def make(env_name, img_dir, num_processes):
-    envs = SubprocVecEnv([
-        make_env(env_name, img_dir, 1337, i) for i in range(num_processes)
-    ])
-    return envs
+    return SubprocVecEnv(
+        [make_env(env_name, img_dir, 1337, i) for i in range(num_processes)]
+    )

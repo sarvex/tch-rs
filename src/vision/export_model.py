@@ -6,6 +6,5 @@ import torch
 import torchvision
 
 m = torchvision.models.efficientnet_b0(pretrained=True)
-nps = {}
-for k, v in m.state_dict().items(): nps[k] = v.numpy()
+nps = {k: v.numpy() for k, v in m.state_dict().items()}
 np.savez('efficientnet-b0.npz', **nps)
